@@ -23,7 +23,7 @@ SofaFit es una aplicación web enfocada en brindar programas de ejercicio person
 
 1. Clonar el repositorio:
    ```bash
-   git clone https://github.com/KevinSG10/sofafit.git
+   git clone https://github.com/KevinSG10/sofafit.git ```
 
 
 2. **Configurar la base de datos:**
@@ -39,7 +39,7 @@ SofaFit es una aplicación web enfocada en brindar programas de ejercicio person
   sexo ENUM('hombre', 'mujer'),
   altura DECIMAL(5,2),
   edad INT
-);
+); ```
 
 4. Configurar las variables de entorno para la conexión con MySQL en db.js:
 
@@ -49,7 +49,7 @@ const db = mysql.createConnection({
   user: 'root',
   password: 'TU_CONTRASEÑA',
   database: 'db_sofafit',
-});
+}); ```
 
 5. Iniciar el servidor de desarrollo:
  -**Backend:**
