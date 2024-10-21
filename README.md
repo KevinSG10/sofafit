@@ -39,7 +39,8 @@ SofaFit es una aplicación web enfocada en brindar programas de ejercicio person
   sexo ENUM('hombre', 'mujer'),
   altura DECIMAL(5,2),
   edad INT
-);  ```
+);
+ ```
 
 4. Configurar las variables de entorno para la conexión con MySQL en db.js:
 
