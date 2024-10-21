@@ -1,0 +1,222 @@
+/* Estilos principales para el contenedor */
+.perfilContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+
+
+  /* Navbar del menú */
+  .menu_perfilNavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #8B0000;
+    padding: 10px 20px;
+  }
+  
+  /* Logo del menú */
+  .menu_perfilLogo {
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+  
+  .menu_perfilLogoImg {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  /* Menú principal */
+  .menu_perfilMenu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .menu_perfilLink,
+  .menu_perfilBtn {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Dropdown del menú */
+  .menu_perfilDropdown {
+    position: relative;
+  }
+  
+  .menu_perfilDropdownContent {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: #8B0000;
+    padding: 10px 0;
+    min-width: 150px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
+  }
+  
+  /* Mostrar dropdown al hacer hover */
+  .menu_perfilDropdown:hover .menu_perfilDropdownContent {
+    display: block;
+  }
+  
+  .menu_perfilDropdownContent .menu_perfilLink {
+    display: block;
+    padding: 8px 12px;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover sobre los elementos del dropdown */
+  .menu_perfilDropdownContent .menu_perfilLink:hover {
+    background-color: #A52A2A;
+  }
+  
+  /* Estilos del botón de logout */
+  .menu_perfilBtn {
+    padding: 8px 16px;
+    background-color: #FF6347;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu_perfilBtn:hover {
+    background-color: #FF4500;
+  }
+  
+  /* Estilos adicionales para la sección de contenido del perfil */
+  .perfilContent {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .perfilContent h1 {
+    color: #8B0000;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .perfilContent p {
+    font-size: 16px;
+    color: #333;
+    margin: 8px 0;
+  }
+  
+  .perfilContent strong {
+    font-weight: bold;
+  }
+  
+  /* Estilo para el saludo del usuario */
+  .menu_perfilUser {
+    color: white;
+    font-weight: bold;
+    margin-right: 20px; 
+    font-size: 16px;
+  }
+
+  
+
+
+
+
+
+  /* Estilos específicos para el contenido del perfil */
+.perfilContent {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: left;
+  }
+  
+  .perfilContent h1 {
+    color: #8B0000;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .perfilContent p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .perfilContent p strong {
+    color: #333;
+  }
+
+
+  
+
+  /* Botón Guardar */
+#btnGuardarPerfil {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btnGuardarPerfil:hover {
+  background-color: #45a049;
+}
+
+/* Botón Cancelar */
+#btnCancelarPerfil {
+  background-color: #FF6347;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btnCancelarPerfil:hover {
+  background-color: #FF4500;
+}
+
+/* Botón Editar Perfil */
+#btnEditarPerfil {
+  background-color: #008CBA;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btnEditarPerfil:hover {
+  background-color: #007BB5;
+}
+
+/* Inputs de edición */
+.perfilContainer input {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+}

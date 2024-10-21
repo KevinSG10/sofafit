@@ -1,0 +1,131 @@
+
+.plan-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #8B0000;
+    padding: 10px 20px; 
+  }
+  
+  /* Estilo del logo */
+  .plan-logo {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .plan-logo-img {
+    height: 40px; 
+    margin-right: 10px;
+  }
+  
+  /* Estilo del menú */
+  .plan-menu {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Estilo de los enlaces del menú */
+  .plan-menu a {
+    color: white; 
+    text-decoration: none; 
+    font-size: 16px;
+    font-weight: bold; 
+    padding: 10px 15px; 
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Estilo al hacer hover en los enlaces */
+  .plan-menu a:hover {
+    background-color: #A52A2A; 
+    border-radius: 5px; 
+  }
+
+  
+
+
+
+
+
+
+
+
+.plan-title {
+    text-align: center;
+    color: black;
+    margin: 20px 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+/* Contenedor principal */
+.plan-content {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start;
+    width: 100%; 
+    max-width: 1200px; 
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 auto; 
+}
+
+/* Formulario de filtros */
+#filterForm {
+    flex: 1;
+}
+
+#filterForm label {
+    font-weight: bold;
+    color: #333;
+}
+
+#filterForm input,
+#filterForm select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Botones del formulario */
+.plan-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+#filterForm button {
+    width: calc(50% - 10px);
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d80000;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#filterForm button:hover {
+    background-color: #a60000;
+}
+
+/* Sección de receta */
+.plan-recipe {
+    flex: 1;
+    margin-left: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    color: #333;
+}

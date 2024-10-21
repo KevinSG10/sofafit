@@ -1,0 +1,101 @@
+/* src/pages/SignIn.css */
+
+/* Fuente y fondo */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+
+/* Contenedor principal */
+.signin-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/assets/images/fondoHome.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    width: 100%; 
+}
+
+/* Tarjeta de inicio de sesión */
+.signin-container {
+    max-width: 400px;
+    width: 90%;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Título */
+.signin-container h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+/* Formulario */
+.signin-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Campos de entrada */
+.signin-container input {
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s;
+}
+
+.signin-container input:focus {
+    background-color: #e0e0e0;
+    outline: none;
+}
+
+/* Botón */
+.signin-container button {
+    padding: 15px;
+    font-size: 1rem;
+    background-color: #8B0000;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signin-container button:hover {
+    background-color: #c22a10;
+}
+
+/* Texto adicional */
+.signin-container p {
+    margin-top: 25px;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Enlaces */
+.signin-container a {
+    color: #c22a10;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signin-container a:hover {
+    text-decoration: underline;
+}
+
+
+
+  
+  
+  
+  
