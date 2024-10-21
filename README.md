@@ -1,6 +1,6 @@
 # SofaFit
 
-SofaFit es una aplicación web enfocada en brindar programas de ejercicio personalizados para entrenar desde casa. Los usuarios pueden crear un perfil, elegir su nivel de entrenamiento y seguir rutinas adecuadas a sus características físicas, como peso, altura, sexo y edad.
+SofaFit es una aplicación web que esta enfocada en brindar programas de ejercicio personalizados para entrenar desde casa con 3 niveles de fificultad (facil, dificil, avanzado). Los usuarios pueden crear un perfil, elegir su nivel de entrenamiento y seguir rutinas adecuadas a sus características físicas, como peso, altura, sexo y edad, también tienen la posiblidad de elegir el enfoque principal de sus ejercicios como podría ser quemar grasa, adelgazar o simplemente estar en forma. 
 
 ## Características principales:
 - Registro e inicio de sesión de usuarios.
@@ -68,16 +68,17 @@ npm run dev
 ```
 
 **Funcionalidades adicionales:**
-Actualización del perfil: El usuario puede modificar su peso, altura, edad y contraseña desde la página de perfil.
+Actualización del perfil: 
+El usuario puede modificar su peso, altura, edad y contraseña desde la página de perfil.
 Recomendación personalizada de rutinas: La aplicación sugiere rutinas basadas en los datos físicos del usuario.
 Niveles de entrenamiento: Los usuarios pueden elegir entre tres niveles: Principiante, Intermedio y Avanzado, con rutinas específicas para cada nivel.
 Rutinas diarias: El sistema permite elegir la rutina para un día específico del mes.
 
-Autenticación:
+**Autenticación:**
 El sistema usa autenticación simple de usuarios con almacenamiento de credenciales en la base de datos.
 
 
-Autor:
+**Autor:**
 Este proyecto fue desarrollado por Kevin Gallego y Alexandra Carvajal, como parte de un esfuerzo para ofrecer una solución fitness sencilla para aquellos que prefieren entrenar en casa.
 
 
