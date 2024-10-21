@@ -50,7 +50,8 @@ const db = mysql.createConnection({
   user: 'root',
   password: 'TU_CONTRASEÑA',
   database: 'db_sofafit',
-}); ```
+});
+ ```
 
 5. Iniciar el servidor de desarrollo:
  -**Backend:**
@@ -58,11 +59,13 @@ const db = mysql.createConnection({
 ```bash
 cd backend
 node index.js
+```
 
 **Frontend:**
 ```bash
 cd frontend
 npm run dev
+```
 
 **Funcionalidades adicionales:**
 Actualización del perfil: El usuario puede modificar su peso, altura, edad y contraseña desde la página de perfil.
