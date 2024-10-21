@@ -20,7 +20,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      localStorage.removeItem('userEmail'); // Eliminamos el email del localStorage al cerrar sesión
+      localStorage.removeItem('userEmail'); 
       navigate('/signin');
     } catch (error) {
       console.error('Error al cerrar sesión:', error);

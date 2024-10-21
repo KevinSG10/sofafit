@@ -42,7 +42,6 @@ const Perfil = () => {
 
   const handleCancel = () => {
     setIsEditing(false);
-    // Opcional: volver a cargar los datos originales
   };
 
   const handleSave = () => {

@@ -121,7 +121,7 @@ app.put('/update-profile', (req, res) => {
   // Generar la consulta de actualización dinámica
   const fields = Object.keys(updateData).map((key) => `${key} = ?`).join(', ');
   const values = Object.values(updateData);
-  values.push(email); // Agregar el email al final para el WHERE
+  values.push(email);
 
   const sql = `UPDATE users SET ${fields} WHERE email = ?`;
 
