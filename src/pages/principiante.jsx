@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './principiante.css';
 import { Link } from 'react-router-dom';
 
@@ -7,11 +7,22 @@ const Principiante = () => {
   const [selectedDay, setSelectedDay] = useState(null);
   const [selectedExercise, setSelectedExercise] = useState(null);
 
+  // Referencia a la sección de la rutina
+  const routineSectionRef = useRef(null);
+
   const showRoutine = (level) => {
     setSelectedLevel(level);
     setSelectedDay(getCurrentDay()); 
     setSelectedExercise(null); 
+    // Eliminamos la llamada a scrollIntoView desde aquí
   };
+
+  // Efecto para desplazar la vista cuando selectedLevel cambia
+  useEffect(() => {
+    if (selectedLevel && routineSectionRef.current) {
+      routineSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [selectedLevel]);
 
   // Función para obtener el día actual
   const getCurrentDay = () => {
@@ -33,8 +44,8 @@ const Principiante = () => {
 
     if (selectedLevel === 'principiante') {
       return [
-        { name: " 1: Iniciar 3 series de 10 repeticiones", videoFile: "video1.mp4" },
-        { name: " 2: Iniciar 3 series de 10 repeticiones", videoFile: "video2.mp4" },
+        { name: "1: Iniciar 3 series de 10 repeticiones", videoFile: "video1.mp4" },
+        { name: "2: Iniciar 3 series de 10 repeticiones", videoFile: "video2.mp4" },
       ];
     }
     if (selectedLevel === 'intermedio') {
@@ -83,9 +94,9 @@ const Principiante = () => {
         </div>
       </div>
 
-      {}
+      {/* Contenido Principal */}
       <div className="prin-content">
-        <h1>Bienvenido al Nivel de etrenamiento PRINCIPIANTE elige una rutina</h1>
+        <h1>Bienvenido al Nivel de entrenamiento PRINCIPIANTE elige una rutina</h1>
         <div className="prin-level-selection">
           {/* Tarjetas de nivel */}
           <div className="prin-level-card">
@@ -108,9 +119,13 @@ const Principiante = () => {
           </div>
         </div>
 
-        {}
+        {/* Sección de Rutina */}
         {selectedLevel && (
-          <div id="prin-routine-section" className="prin-routine-section">
+          <div
+            id="prin-routine-section"
+            className="prin-routine-section"
+            ref={routineSectionRef}
+          >
             <div className="prin-routine-content">
               <div className="prin-calendar-container">
                 <h2>Días del Mes</h2>
@@ -118,9 +133,9 @@ const Principiante = () => {
                   {Array.from({ length: getDaysInMonth() }, (_, i) => (
                     <div
                       key={i}
-                      className={`prin-day ${i + 1 === getCurrentDay() ? 'current-day' : ''} ${
-                        selectedDay === i + 1 ? 'selected-day' : ''
-                      }`}
+                      className={`prin-day ${
+                        i + 1 === getCurrentDay() ? 'current-day' : ''
+                      } ${selectedDay === i + 1 ? 'selected-day' : ''}`}
                       onClick={() => handleDaySelect(i + 1)}
                     >
                       {i + 1}
@@ -129,7 +144,7 @@ const Principiante = () => {
                 </div>
               </div>
 
-              {}
+              {/* Detalles de la Rutina */}
               <div className="prin-routine-details">
                 <h2>
                   Rutina para{' '}
@@ -159,7 +174,7 @@ const Principiante = () => {
                 )}
               </div>
 
-              {/* Video de la rutina */}
+              {/* Video de la Rutina */}
               <div className="prin-video-container">
                 <h2>Video de la Rutina</h2>
                 {selectedExercise ? (
@@ -184,6 +199,8 @@ const Principiante = () => {
 };
 
 export default Principiante;
+
+
 
 
 

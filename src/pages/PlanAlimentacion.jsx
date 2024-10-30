@@ -82,7 +82,7 @@ const PlanAlimentacion = () => {
         `;
       } else if (fitnessGoal === 'mantenimiento') {
         recipeContent = `
-          <h3>Mantenimiento</h3>
+          <h3>Estar en forma</h3>
           <p><strong>Desayuno:</strong> Yogur Griego con Frutas y Granola</p>
           <p><strong>Instrucciones:</strong></p>
           <ol>
@@ -174,7 +174,7 @@ const PlanAlimentacion = () => {
         `;
       } else if (fitnessGoal === 'mantenimiento') {
         recipeContent = `
-          <h3>Mantenimiento</h3>
+          <h3>Estar en forma</h3>
           <p><strong>Desayuno:</strong> Avena con Frutas y Nueces</p>
           <p><strong>Instrucciones:</strong></p>
           <ol>
@@ -306,7 +306,7 @@ const PlanAlimentacion = () => {
             <option value="">Selecciona una opción</option>
             <option value="ganancia muscular">Ganancia muscular</option>
             <option value="pérdida de peso">Pérdida de peso</option>
-            <option value="mantenimiento">Mantenimiento</option>
+            <option value="mantenimiento">Estar en forma</option>
           </select>
           <br />
           <br />

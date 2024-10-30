@@ -103,3 +103,130 @@
     text-decoration: underline;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Contenedor del campo de contraseña */
+.password-field {
+    display: flex;
+    align-items: center; /* Asegura que el botón y el input estén alineados verticalmente */
+    position: relative;
+}
+  
+.password-field input {
+    flex: 1; /* Hace que el input ocupe el espacio disponible */
+    padding-right: 45px; /* Espacio para el botón */
+    height: 40px; /* Altura uniforme para el input */
+    border-radius: 30px;
+    font-size: 1rem;
+    border: none;
+    background-color: #f0f0f0;
+    padding: 10px 15px; /* Ajuste del padding para mejorar la alineación */
+}
+  
+  
+  .password-field input:focus {
+    background-color: #e0e0e0;
+    outline: none;
+  }
+  
+  /* Botón para mostrar/ocultar contraseña */
+  .toggle-password {
+    width: 30px; /* Ajusta el tamaño para mejorar la alineación */
+    height: 30px;
+    background-color: #8B0000;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px; /* Ajusta el margen para alinearlo mejor */
+  }
+  
+  
+  .toggle-password:hover {
+    background-color: #c22a10;
+  }
+  
+  .toggle-password:disabled {
+    background-color: #cccccc;
+    color: #fff;
+    cursor: not-allowed;
+  }
+
+
+
+  /* Estilos personalizados para el campo de selección */
+.signup-container select {
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    background-color: #f0f0f0;
+    color: #333;
+    appearance: none; /* Elimina el estilo predeterminado del navegador */
+    -webkit-appearance: none; /* Compatibilidad con navegadores basados en WebKit */
+    -moz-appearance: none; /* Compatibilidad con Firefox */
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.signup-container select:focus {
+    background-color: #e0e0e0;
+    outline: none;
+}
+
+/* Añadir un ícono de flecha personalizado al <select> */
+.signup-container .select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.signup-container .select-wrapper::after {
+    content: '▼'; /* Símbolo de flecha */
+    position: absolute;
+    right: 15px; /* Ubicación de la flecha */
+    pointer-events: none;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+
+/* Estilos para las validaciones de contraseña */
+.password-requirements {
+    margin: 10px 0 20px;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9rem;
+    color: #999; /* Color sutil para que no llame demasiado la atención */
+}
+
+.password-requirements li {
+    margin-bottom: 5px;
+}
+
+.password-requirements li.valid {
+    color: #4caf50; /* Verde para indicar que el requisito se ha cumplido */
+    font-weight: bold; /* Resalta los elementos validados */
+}
+
+  
+  
+  
+  
+  

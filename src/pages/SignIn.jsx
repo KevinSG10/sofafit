@@ -1,4 +1,5 @@
 // pagina SignIn.jax
+// página SignIn
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -21,6 +22,9 @@ const SignIn = () => {
       });
 
       if (response.status === 200) {
+        // Almacenar el nombre del usuario en localStorage
+        localStorage.setItem('userName', response.data.name);
+        // Opcional: almacenar el email si aún lo necesitas
         localStorage.setItem('userEmail', email);
         navigate('/dashboard');
       }
@@ -76,6 +80,7 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
 
 
 

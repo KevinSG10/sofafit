@@ -8,10 +8,11 @@ const Perfil = () => {
   const [userData, setUserData] = useState({
     email: '',
     password: '',
+    nombre: '', 
     peso: '',
     sexo: '',
     altura: '',
-    edad: ''
+    edad: '',
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -21,7 +22,8 @@ const Perfil = () => {
     const email = localStorage.getItem('userEmail');
 
     if (email) {
-      axios.get(`http://127.0.0.1:5000/user-profile?email=${email}`)
+      axios
+        .get(`http://127.0.0.1:5000/user-profile?email=${email}`)
         .then((response) => {
           setUserData(response.data);
         })
@@ -33,6 +35,7 @@ const Perfil = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('userEmail');
+    localStorage.removeItem('userName'); // Añadido si es necesario
     navigate('/signin');
   };
 
@@ -47,13 +50,16 @@ const Perfil = () => {
   const handleSave = () => {
     const email = localStorage.getItem('userEmail');
 
-    axios.put(`http://127.0.0.1:5000/update-profile`, {
-      email,
-      ...userData,
-    })
+    axios
+      .put(`http://127.0.0.1:5000/update-profile`, {
+        email,
+        ...userData,
+      })
       .then((response) => {
         alert('Perfil actualizado correctamente.');
         setIsEditing(false);
+        // Actualizar el nombre en localStorage si se ha modificado
+        localStorage.setItem('userName', userData.nombre);
       })
       .catch((error) => {
         console.error('Error al actualizar el perfil:', error);
@@ -80,18 +86,37 @@ const Perfil = () => {
 
         <div className="menu_perfilMenu">
           <div className="menu_perfilDropdown">
-            <Link to="#" className="menu_perfilLink">PROGRAMAS</Link>
+            <Link to="#" className="menu_perfilLink">
+              PROGRAMAS
+            </Link>
             <div className="menu_perfilDropdownContent">
-              <Link to="/principiante" className="menu_perfilLink">PRINCIPIANTE</Link>
-              <Link to="/intermedio" className="menu_perfilLink">INTERMEDIO</Link>
-              <Link to="/avanzado" className="menu_perfilLink">AVANZADO</Link>
+              <Link to="/principiante" className="menu_perfilLink">
+                PRINCIPIANTE
+              </Link>
+              <Link to="/intermedio" className="menu_perfilLink">
+                INTERMEDIO
+              </Link>
+              <Link to="/avanzado" className="menu_perfilLink">
+                AVANZADO
+              </Link>
             </div>
           </div>
-          <Link to="/Tips" className="menu_perfilLink">TIPS & CONSEJOS</Link>
-          <Link to="/plan-alimentacion" className="menu_perfilLink">ALIMENTACIÓN</Link>
-          <Link to="/testimonios" className="menu_perfilLink">TESTIMONIOS</Link>
-          <Link to="/contact" className="menu_perfilLink">CONTACTO</Link>
-          <Link to="/perfil" className="menu_perfilLink">MI PERFIL</Link>
+          <Link to="/Tips" className="menu_perfilLink">
+            TIPS & CONSEJOS
+          </Link>
+          <Link to="/plan-alimentacion" className="menu_perfilLink">
+            ALIMENTACIÓN
+          </Link>
+          <Link to="/testimonios" className="menu_perfilLink">
+            TESTIMONIOS
+          </Link>
+          <Link to="/contact" className="menu_perfilLink">
+            CONTACTO
+          </Link>
+          <Link to="/perfil" className="menu_perfilLink">
+            MI PERFIL
+          </Link>
+          <Link to="/dashboard" className="menu_perfilLink">INICIO</Link>
 
           <button
             id="menu_perfilLogoutButton"
@@ -110,6 +135,15 @@ const Perfil = () => {
           <>
             <p>
               <strong>Email:</strong> {userData.email}
+            </p>
+            <p>
+              <strong>Nombre:</strong>
+              <input
+                type="text"
+                name="nombre"
+                value={userData.nombre}
+                onChange={handleChange}
+              />
             </p>
             <p>
               <strong>Contraseña:</strong>
@@ -131,11 +165,7 @@ const Perfil = () => {
             </p>
             <p>
               <strong>Sexo:</strong>
-              <select
-                name="sexo"
-                value={userData.sexo}
-                onChange={handleChange}
-              >
+              <select name="sexo" value={userData.sexo} onChange={handleChange}>
                 <option value="">Selecciona tu sexo</option>
                 <option value="hombre">Hombre</option>
                 <option value="mujer">Mujer</option>
@@ -160,18 +190,40 @@ const Perfil = () => {
                 onChange={handleChange}
               />
             </p>
-            <button id="btnGuardarPerfil" className="btn-perfil-guardar" onClick={handleSave}>Guardar</button>
-            <button id="btnCancelarPerfil" className="btn-perfil-cancelar" onClick={handleCancel}>Cancelar</button>
+            <button id="btnGuardarPerfil" className="btn-perfil-guardar" onClick={handleSave}>
+              Guardar
+            </button>
+            <button id="btnCancelarPerfil" className="btn-perfil-cancelar" onClick={handleCancel}>
+              Cancelar
+            </button>
           </>
         ) : (
           <>
-            <p><strong>Email:</strong> {userData.email || 'No disponible'}</p>
-            <p><strong>Contraseña:</strong> {userData.password || 'No disponible'}</p>
-            <p><strong>Peso:</strong> {userData.peso ? `${userData.peso} kg` : 'No especificado'}</p>
-            <p><strong>Sexo:</strong> {userData.sexo || 'No especificado'}</p>
-            <p><strong>Altura:</strong> {userData.altura ? `${userData.altura} m` : 'No especificada'}</p>
-            <p><strong>Edad:</strong> {userData.edad ? `${userData.edad} años` : 'No especificada'}</p>
-            <button id="btnEditarPerfil" className="btn-perfil-editar" onClick={handleEdit}>Editar Perfil</button>
+            <p>
+              <strong>Email:</strong> {userData.email || 'No disponible'}
+            </p>
+            <p>
+              <strong>Nombre:</strong> {userData.nombre || 'No disponible'}
+            </p>
+            <p>
+              <strong>Contraseña:</strong> {userData.password || 'No disponible'}
+            </p>
+            <p>
+              <strong>Peso:</strong> {userData.peso ? `${Math.round(userData.peso)} kg` : 'No especificado'}
+            </p>
+            <p>
+              <strong>Sexo:</strong> {userData.sexo || 'No especificado'}
+            </p>
+            <p>
+              <strong>Estatura:</strong> {userData.altura ? `${parseFloat(userData.altura).toFixed(0)} cm` : 'No especificada'}
+            </p>
+            <p>
+              <strong>Edad:</strong>{' '}
+              {userData.edad ? `${userData.edad} años` : 'No especificada'}
+            </p>
+            <button id="btnEditarPerfil" className="btn-perfil-editar" onClick={handleEdit}>
+              Editar Perfil
+            </button>
           </>
         )}
       </div>
@@ -180,6 +232,7 @@ const Perfil = () => {
 };
 
 export default Perfil;
+
 
 
 

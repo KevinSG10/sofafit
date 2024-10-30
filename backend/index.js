@@ -26,15 +26,18 @@ db.connect((err) => {
 app.post('/register', (req, res) => {
   console.log('Punto 1: Solicitud recibida en /register');
   console.log('Datos recibidos en /register:', req.body);
-  const { email, password, peso, sexo, altura, edad } = req.body;
 
-  if (!email || !password || !peso || !sexo || !altura || !edad) {
+  // Incluimos 'nombre' en la desestructuración
+  const { email, password, nombre, peso, sexo, altura, edad } = req.body;
+
+  // Validamos que todos los campos están presentes
+  if (!email || !password || !nombre || !peso || !sexo || !altura || !edad) {
     console.log('Punto 2: Faltan campos requeridos');
     return res.status(400).json({ message: 'Todos los campos son requeridos' });
   }
 
   console.log('Punto 3: Todos los campos presentes');
-  
+
   db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
     if (err) {
       console.error('Error al verificar el correo:', err);
@@ -46,10 +49,12 @@ app.post('/register', (req, res) => {
       return res.status(409).json({ message: 'El correo electrónico ya está registrado' });
     } else {
       console.log('Punto 5: Registrando nuevo usuario');
-      
+
+
+      // Incluimos 'nombre' en la consulta INSERT
       db.query(
-        'INSERT INTO users (email, password, peso, sexo, altura, edad) VALUES (?, ?, ?, ?, ?, ?)',
-        [email, password, peso, sexo, altura, edad],
+        'INSERT INTO users (email, password, nombre, peso, sexo, altura, edad) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [email, password, nombre, peso, sexo, altura, edad],
         (err, result) => {
           if (err) {
             console.error('Error al registrar el usuario:', err);
@@ -73,6 +78,8 @@ app.post('/login', (req, res) => {
     return res.status(400).json({ message: 'Email y contraseña son requeridos' });
   }
 
+
+
   // Verificar si el usuario existe y la contraseña coincide
   db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], (err, results) => {
     if (err) {
@@ -82,7 +89,11 @@ app.post('/login', (req, res) => {
 
     if (results.length > 0) {
       // Inicio de sesión exitoso
-      res.status(200).json({ message: 'Inicio de sesión exitoso' });
+      const user = results[0]; // Obtenemos el usuario de los resultados
+      res.status(200).json({
+        message: 'Inicio de sesión exitoso',
+        name: user.nombre, // Devolvemos el nombre del usuario
+      });
     } else {
       // Credenciales incorrectas
       res.status(401).json({ message: 'Correo o contraseña incorrectos' });
@@ -96,7 +107,7 @@ app.post('/login', (req, res) => {
 
 // Endpoint para actualizar el perfil del usuario
 app.put('/update-profile', (req, res) => {
-  const { email, password, peso, sexo, altura, edad } = req.body;
+  const { email, password, nombre, peso, sexo, altura, edad } = req.body;
 
   if (!email) {
     return res.status(400).json({ message: 'Email es requerido' });
@@ -105,11 +116,13 @@ app.put('/update-profile', (req, res) => {
   // Construir el objeto de actualización
   const updateData = {
     password,
+    nombre, 
     peso,
     sexo,
     altura,
-    edad
+    edad,
   };
+
 
   // Eliminar campos undefined o null
   Object.keys(updateData).forEach((key) => {
@@ -124,6 +137,7 @@ app.put('/update-profile', (req, res) => {
   values.push(email);
 
   const sql = `UPDATE users SET ${fields} WHERE email = ?`;
+
 
   db.query(sql, values, (err, result) => {
     if (err) {
@@ -146,26 +160,73 @@ app.put('/update-profile', (req, res) => {
 
 // Endpoint para obtener los datos del perfil del usuario
 app.get('/user-profile', (req, res) => {
-  const { email } = req.query;  
+  const { email } = req.query;
 
   if (!email) {
     return res.status(400).json({ message: 'Email requerido' });
   }
 
+
   // Consulta a la base de datos para obtener todos los datos del usuario
-  db.query('SELECT email, password, peso, sexo, altura, edad FROM users WHERE email = ?', [email], (err, results) => {
+  db.query('SELECT email, password, nombre, peso, sexo, altura, edad FROM users WHERE email = ?', [email], (err, results) => {
     if (err) {
       console.error('Error al obtener los datos del usuario:', err);
       return res.status(500).json({ message: 'Error en el servidor' });
     }
 
     if (results.length > 0) {
-      res.status(200).json(results[0]);  
+      res.status(200).json(results[0]);
     } else {
       res.status(404).json({ message: 'Usuario no encontrado' });
     }
   });
 });
+
+
+// Endpoint para Obtener el Progreso
+app.get('/progress', (req, res) => {
+  const { email } = req.query;
+
+  if (!email) {
+    return res.status(400).json({ message: 'Email requerido' });
+  }
+
+  db.query(
+    'SELECT training_date, status FROM progreso WHERE userEmail = ? ORDER BY training_date ASC',
+    [email],
+    (err, results) => {
+      if (err) {
+        console.error('Error al obtener el progreso:', err);
+        return res.status(500).json({ message: 'Error al obtener el progreso' });
+      }
+      res.status(200).json(results);
+    }
+  );
+});
+
+
+
+//. Endpoint para Marcar un Día de Ejercicio
+app.post('/update-progress', (req, res) => {
+  const { email, exercise_date, status } = req.body;
+
+  if (!email || !exercise_date) {
+    return res.status(400).json({ message: 'Email y fecha de ejercicio son requeridos' });
+  }
+
+  db.query(
+    'INSERT INTO progreso (userEmail, training_date, status) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE status = ?',
+    [email, exercise_date, status, status],
+    (err, result) => {
+      if (err) {
+        console.error('Error al actualizar el progreso:', err);
+        return res.status(500).json({ message: 'Error al actualizar el progreso' });
+      }
+      res.status(200).json({ message: 'Progreso actualizado exitosamente' });
+    }
+  );
+});
+
 
 
 const PORT = 5000;

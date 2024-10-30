@@ -7,18 +7,19 @@ import Dashboard from './pages/Dashboard';
 import Tips from './pages/Tips';
 import TestPage from './pages/TestPage';
 import PlanAlimentacion from './pages/PlanAlimentacion';
-import Principiante from './pages/Principiante'; 
+import Principiante from './pages/Principiante';
 import Intermedio from './pages/Intermedio';
-import Avanzado from './pages/Avanzado'; 
-import Testimonios from './pages/Testimonios'; 
-import Contact from './pages/Contact'; 
-import Perfil from './pages/Perfil'; 
+import Avanzado from './pages/Avanzado';
+import Testimonios from './pages/Testimonios';
+import Contact from './pages/Contact';
+import Perfil from './pages/Perfil';
+import Progreso from './pages/Progreso'; // Importa el componente Progreso
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/signin" />} /> 
+        <Route path="/" element={<Navigate to="/signin" />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -31,12 +32,14 @@ function App() {
         <Route path="/testimonios" element={<Testimonios />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/progreso" element={<Progreso />} /> {/* Nueva ruta Progreso */}
       </Routes>
     </Router>
   );
 }
 
 export default App;
+
 
 
 

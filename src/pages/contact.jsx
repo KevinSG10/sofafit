@@ -1,37 +1,37 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import './style-contact.css';
 
 function Contacto() {
-
+  const handleLogout = () => {
+    // Lógica de cierre de sesión
+  };
 
   return (
     <div className="contact-page">
+      {/* Menú de navegación */}
+      <div className="menu_contactoNavbar">
+        <div className="menu_contactoLogo">
+          <img src="/assets/images/logo-home.png" alt="Logo" className="menu_contactoLogoImg" />
+          SOFAFIT
+        </div>
+
+        <div className="menu_contactoMenu">
+          <div className="menu_contactoDropdown">
+          </div>
+          <a href="/tips" className="menu_contactoLink">TIPS & CONSEJOS</a>
+          <a href="/plan-alimentacion" className="menu_contactoLink">ALIMENTACIÓN</a>
+          <a href="/testimonios" className="menu_contactoLink">TESTIMONIOS</a>
+          <a href="/contact" className="menu_contactoLink">CONTACTO</a>
+          <a href="/perfil" className="menu_contactoLink">MI PERFIL</a>
+          <a href="/dashboard" className="menu_contactoLink">INICIO</a>
+
+          <button id="menu_contactoLogoutButton" className="menu_contactoBtn" onClick={handleLogout}>
+            SALIR
+          </button>
+        </div>
+      </div>
+      
       <header>
-        {}
-        <nav className="dashboardNavbar">
-          <div className="dashboardLogo">
-            {}
-            {}
-            <span>SOFAFIT</span>
-          </div>
-          <div className="dashboardMenu">
-            <div className="dashboardDropdown">
-              <Link to="#" className="dashboardLink">PROGRAMAS</Link>
-              <div className="dashboardDropdownContent">
-                <Link to="/principiante" className="dashboardLink">PRINCIPIANTE</Link>
-                <Link to="/intermedio" className="dashboardLink">INTERMEDIO</Link>
-                <Link to="/avanzado" className="dashboardLink">AVANZADO</Link>
-              </div>
-            </div>
-            <Link to="/tips" className="dashboardLink">TIPS & CONSEJOS</Link>
-            <Link to="/plan-alimentacion" className="dashboardLink">ALIMENTACIÓN</Link>
-            <Link to="/testimonios" className="dashboardLink">TESTIMONIOS</Link>
-            <Link to="/dashboard" className="dashboardLink">INICIO</Link>
-
-          </div>
-        </nav>
-
         {/* Título para contacto */}
         <div className="container titulo">
           <h1 className="titulo">Contáctenos</h1>
@@ -60,5 +60,6 @@ function Contacto() {
 }
 
 export default Contacto;
+
 
 
